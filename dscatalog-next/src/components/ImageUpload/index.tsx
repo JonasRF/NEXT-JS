@@ -9,7 +9,7 @@ type Props = {
     productImgUrl: string;
 }
 
-export default function ImageUpload({ productImgUrl }: Props) {
+export default function ImageUpload({ productImgUrl, onUploadSucess }: Props) {
     const [uploadProgress, setUploadProgress] = useState(0);
     const [uploadedImgUrl, setUploadedImgUrl] = useState("");
 
@@ -37,7 +37,7 @@ export default function ImageUpload({ productImgUrl }: Props) {
         })
             .then((response) => {
                 setUploadedImgUrl(response.data.uri);
-                onUploadProgress(response.data.uri)
+                onUploadSucess(response.data.uri);
             })
             .catch(() => console.log('Erro ao enviar arquivo!')
             )
